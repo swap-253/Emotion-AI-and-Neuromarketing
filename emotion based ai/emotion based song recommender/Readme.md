@@ -9,4 +9,6 @@ a) First page asks the user to enter the language in which he/she wants to hear 
 b) Second page asks the user to enter his/her singer from the list or any other whose song he/she wants to hear.
 <br>
 c) Now using OpenCV, the camera opens and capatures the face of the person present which is sent to our trained model which ultimately predicts the emotion of the person.
+<br>
+
 - Now recommended songs are opened on youtube for the person as per his/her choices and emotion. Like romantic songs if happy, heartbroken songs if sad or party songs etc.
