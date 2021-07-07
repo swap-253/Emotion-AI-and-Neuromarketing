@@ -13,7 +13,7 @@
 #### I clicked Arijit Singh hence changing its color.
 #### Now using OpenCV, the camera opens and capatures the face of the person present which is sent to our trained model which ultimately predicts the emotion of the person.
 ![image](https://user-images.githubusercontent.com/75975560/124745355-5b23bd00-df3d-11eb-8a36-f79d7df88a14.png)
-#### The recommendations page we get after clicking 'Click Here to get your Personalised Recommendation', looks like
+#### The recommendations page we get after clicking <u>'Click Here to get your Personalised Recommendation'</u>, looks like
 ![image](https://user-images.githubusercontent.com/75975560/124746142-29f7bc80-df3e-11eb-80aa-445a178d3cc8.png)
 #### which is actually the link
 https://www.youtube.com/results?search_query=arijit+singh+heartbroken+Hindi+song
