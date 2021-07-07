@@ -35,7 +35,24 @@ In this Project, I have worked upon detection of emotions from the EEG signals w
 ### Arrangement of the experiment
 The duration of each film clip is about 4 minutes. Each film clip is well edited to create coherent emotion eliciting and maximize emotional meanings. There are totally 15 trials for each experiment. There is a 5s hint before each clip, 45s for self-assessment and 15s for rest after each clip in one session. The order of presentation is arranged so that two film clips targeting the same emotion are not shown consecutively. For the feedback, participants are told to report their emotional reactions to each film clip by completing the questionnaire immediately after watching each clip. The detailed protocol is shown below:
 
-image.png
+![image](https://user-images.githubusercontent.com/75975560/124713801-9cf13b00-df1e-11eb-92fd-018c7bd726ee.png)
 
 ### Subjects
 Fifteen Chinese subjects (7 males and 8 females; MEAN: 23.27, STD: 2.37) participated in the experiments. In order to protect personal privacy, we have hidden their names and indicate each subject with a number from 1 to 15.
+
+## Problem Statement
+So since I described earlier that I have been provided with the EEG signals from brainwave scans having **2548 electrodes** each having an activity measured in microVolts and there's another column which is the prediction column containing emotions as **Positive,Negative or Neutral** That literally means that we currently have **2549 columns**. Isn't that a huge number?
+
+The flow of this Analysis has been decided to be:
+
+First I have imported the dataset of SEED EEG emotions from my local directory.
+
+I then used **wavelet transform** to my signals which decomposes a waveform into a set of wavelets and is highly recommended when dealing with signals having short intervals of characteristic oscillations. I even tried **Fourier Transform** but it didn't seem to work probably because it's not good with signals having short intervals of characteristic oscillations since it captures global frequency information, meaning frequencies that persist over an entire signal which doesn't hold good for these signals After wavelet transform my signal reduced from **2548** electrode signals to a mere **319** signals which is a tremendous dimensionality reduction too.
+
+Then I utilised **Recursive Feature Elimination** which works as follows:- Select features by recursively considering smaller and smaller sets of features. First, the estimator which I have taken to be Random Forest is trained on the initial set of features and the importance of each feature is obtained either through any specific attribute or callable. Then, the least important features are pruned from current set of features. That procedure is recursively repeated on the pruned set until the desired number of features which I have set as **10** to select is eventually reached. So now I have made my features as only 10 columns of signals, this is a huge transition from **2548 to 319 to 10**.
+
+Next step is the train test split done as 70-30 ratio
+
+I made it as a supervised learning problem, labels are predicted using predictors andd built a model consisting of only an LSTM and a Dense Layer. So model was trained and validated and it predicted emotions with 89.5 % accuracy on the test set.
+
+In the Last step,I plotted a confusion matrix and a classification report which indicates 89% for both precision and recall and hence f1 score.
